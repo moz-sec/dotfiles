@@ -1,0 +1,21 @@
+# Manage in white list format
+
+### all ignore ###
+/*
+/.**
+
+### not ignore ###
+
+!/.bash_profile
+!/.bashrc
+!/.gitconfig
+!/git-completion.bash
+!/git-prompt.sh
+
+!/setup.sh
+!/install.sh
+
+!/README.md
+!/LICENSE
+!.gitignore
+!.gitkeep
