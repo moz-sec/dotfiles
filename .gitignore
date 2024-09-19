@@ -12,10 +12,12 @@
 !/git-completion.bash
 !/git-prompt.sh
 
-!/setup.sh
-!/install.sh
-
 !/README.md
 !/LICENSE
 !.gitignore
 !.gitkeep
+!.github
+!.github/workflows
+!.github/workflows/*.yaml
+
+!/install.sh
