@@ -15,7 +15,7 @@ jobs:
       - name: Install required packages
         run: apt-get update && apt-get install -y git sudo
       - name: Install dotfiles
-        run: ${{ github.workspace }}/install.sh
+        run: install.sh
 
   centos:
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
       - name: Install required packages
         run: yum install -y git sudo
       - name: Install dotfiles
-        run: ${{ github.workspace }}/install.sh
+        run: /install.sh
 
   alpine:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
       - name: Install required packages
         run: apk add git sudo bash
       - name: Install dotfiles
-        run: ${{ github.workspace }}/install.sh
+        run: install.sh
 
   arch:
     runs-on: ubuntu-latest
@@ -47,4 +47,4 @@ jobs:
       - name: Install required packages
         run: pacman -S --noconfirm git sudo
       - name: Install dotfiles
-        run: ${{ github.workspace }}/install.sh
+        run: install.sh
