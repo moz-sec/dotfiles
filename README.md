@@ -18,6 +18,19 @@ curl -o - https://raw.githubusercontent.com/moz-sec/dotfiles/main/install.sh | b
 
 ## Configuration File
 
+```bash
+$ tree -a -I ".git|.gitignore|.github|README.md|install.sh"
+.
+├── .bash_profile
+├── .bashrc
+├── .git-completion.bash
+├── .git-prompt.sh
+├── .gitconfig
+└── .vimrc
+
+1 directory, 6 files
+```
+
 ### Bash
 
 - [.bash_profile](https://github.com/moz-sec/dotfiles/blob/main/.bash_profile)
