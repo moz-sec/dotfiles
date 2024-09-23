@@ -12,6 +12,8 @@ jobs:
     container: ubuntu:latest
     steps:
       - uses: actions/checkout@v4
+      - name: List current directory contents
+        run: ls -la ./
       - name: Install required packages
         run: apt-get update && apt-get install -y git sudo
       - name: Install dotfiles
@@ -22,6 +24,8 @@ jobs:
     container: centos:latest
     steps:
       - uses: actions/checkout@v4
+      - name: List current directory contents
+        run: ls -la ./
       - name: Install required packages
         run: yum install -y git sudo
       - name: Install dotfiles
@@ -32,6 +36,8 @@ jobs:
     container: alpine:latest
     steps:
       - uses: actions/checkout@v4
+      - name: List root directory contents
+        run: ls -la ./
       - name: Install required packages
         run: apk add git sudo bash
       - name: Install dotfiles
@@ -42,6 +48,8 @@ jobs:
     container: archlinux/base:latest
     steps:
       - uses: actions/checkout@v4
+      - name: List current directory contents
+        run: ls -la ./
       - name: Update packages
         run: pacman -Syu --noconfirm
       - name: Install required packages
