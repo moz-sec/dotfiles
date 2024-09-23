@@ -41,13 +41,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check files
-        run: ls -la ${{ github.workspace }}
+        run: ls -la ./
       - name: Make install.sh executable
-        run: chmod +x ${{ github.workspace }}/install.sh
+        run: chmod +x install.sh
       - name: Install required packages
         run: apk add git sudo bash
       - name: Install dotfiles
-        run: ${{ github.workspace }}/install.sh
+        run: install.sh
 
   arch:
     runs-on: ubuntu-latest
