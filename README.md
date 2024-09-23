@@ -1,5 +1,7 @@
 # dotfiles
 
+[![Check](https://github.com/moz-sec/dotfiles/actions/workflows/check.yaml/badge.svg?event=push)](https://github.com/moz-sec/dotfiles/actions/workflows/check.yaml)
+
 This repository contains configuration files.
 
 ## Setup
