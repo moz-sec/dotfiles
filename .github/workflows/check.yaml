@@ -12,39 +12,35 @@ jobs:
     container: ubuntu:latest
     steps:
       - uses: actions/checkout@v4
+      - name: List current directory contents
+        run: ls -la ./
       - name: Install required packages
         run: apt-get update && apt-get install -y git sudo
       - name: Install dotfiles
-        run: ${{ github.workspace }}/install.sh
-
-  centos:
-    runs-on: ubuntu-latest
-    container: centos:latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install required packages
-        run: yum install -y git sudo
-      - name: Install dotfiles
-        run: ${{ github.workspace }}/install.sh
+        run: sh install.sh
 
   alpine:
     runs-on: ubuntu-latest
     container: alpine:latest
     steps:
       - uses: actions/checkout@v4
+      - name: List root directory contents
+        run: ls -la ./
       - name: Install required packages
         run: apk add git sudo bash
       - name: Install dotfiles
-        run: ${{ github.workspace }}/install.sh
+        run: sh install.sh
 
   arch:
     runs-on: ubuntu-latest
-    container: archlinux/base:latest
+    container: archlinux:latest
     steps:
       - uses: actions/checkout@v4
+      - name: List current directory contents
+        run: ls -la ./
       - name: Update packages
         run: pacman -Syu --noconfirm
       - name: Install required packages
         run: pacman -S --noconfirm git sudo
       - name: Install dotfiles
-        run: ${{ github.workspace }}/install.sh
+        run: sh install.sh
