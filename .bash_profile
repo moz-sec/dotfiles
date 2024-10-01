@@ -27,6 +27,10 @@ fi
 ### welcome messages ###
 echo -e Welcome to "\033[1;32m$(hostname)\033[0;39m", it\'s "\033[1;32m$(date "+%Y/%m/%d")\033[0;39m" today, "\033[1;32m$(date "+%H:%M:%S")\033[0;39m" now.
 
+### check and update dotfiles ###
+# shellcheck source=$HOME/dotfiles/check_update_dotfiles.sh disable=SC1090
+source "$HOME/dotfiles/check_update_dotfiles.sh"
+
 ### Git ###
 if [ -f $HOME/.git-completion.bash ]; then
     # shellcheck source=/Users/kobayashishun/.git-completion.bash

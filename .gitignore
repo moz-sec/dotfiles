@@ -11,6 +11,7 @@
 !/.gitconfig
 !/git-completion.bash
 !/git-prompt.sh
+!/check_update_dotfiles.sh
 
 !/README.md
 !/LICENSE
