@@ -14,10 +14,8 @@ link_to_homedir() {
     mkdir "$HOME/.dotbackup"
   fi
 
-  local script_dir
-  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
   local dotfiles_dir
-  dotfiles_dir="$(dirname ${script_dir})"
+  dotfiles_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
   if [[ "$HOME" != "$dotfiles_dir" ]];then
     for hidden_file in "$dotfiles_dir"/.??*; do
       [[ $(basename "$hidden_file") == ".git" ]] && continue
@@ -31,7 +29,7 @@ link_to_homedir() {
       ln -snf "$hidden_file" "$HOME"
     done
   else
-    echo "same install src dest"
+    echo "Install source and destination are the same, skipping..."
   fi
 }
 
