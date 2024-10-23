@@ -1,15 +1,15 @@
 [user]
-        name = moz-sec
-        email = m0253c@gmail.com
-        signingkey = 6F35D4E667C65DE2
+name = moz-sec
+email = m0253c@gmail.com
+signingkey = 6F35D4E667C65DE2
 
 # Please adapt and uncomment the following lines:
 #       name = moz-sec
 #       email = m0253c@gmail.com
 
 [alias]
-  # view today's change diffs
-  today-numstat = !"f(){ \
+# view today's change diffs
+today-numstat = !"f(){ \
     git log \
     --numstat \
     --branches \
@@ -22,4 +22,4 @@
   };f"
 
 [commit]
-    gpgsign = true
+gpgsign = true
