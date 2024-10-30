@@ -23,3 +23,5 @@ today-numstat = !"f(){ \
 
 [commit]
 gpgsign = true
+[init]
+	defaultBranch = main
