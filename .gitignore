@@ -22,3 +22,5 @@
 !.github/workflows/*.yaml
 
 !/install.sh
+
+!/.shellspeck
