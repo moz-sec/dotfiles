@@ -3,10 +3,6 @@ name = moz-sec
 email = m0253c@gmail.com
 signingkey = 6F35D4E667C65DE2
 
-# Please adapt and uncomment the following lines:
-#       name = moz-sec
-#       email = m0253c@gmail.com
-
 [alias]
 # view today's change diffs
 today-numstat = !"f(){ \
@@ -20,8 +16,10 @@ today-numstat = !"f(){ \
       printf(\"%d (\\x1b[32m+%d\\033[m, \\x1b[31m-%d\\033[m)\\n\", a+d, a, d)\
     }'; \
   };f"
+rep = "!func () { git grep -z -l \"$1\" | xargs -0 sed -i \"s/$1/$2/g\"; }; func"
 
 [commit]
 gpgsign = true
+
 [init]
-	defaultBranch = main
+defaultBranch = main
