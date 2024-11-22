@@ -1,0 +1,17 @@
+name: shellspec
+on: [push, pull_request]
+jobs:
+  shellspec:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup ShellSpec
+        run: |
+          echo "${HOME}/.local/bin" >> $GITHUB_PATH
+          curl -fsSL https://git.io/shellspec | sh -s -- --yes
+      - name: Run shellSpec
+        run: shellspec
