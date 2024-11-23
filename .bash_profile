@@ -31,17 +31,6 @@ echo -e Welcome to "\033[1;32m$(hostname)\033[0;39m", it\'s "\033[1;32m$(date "+
 # shellcheck source=$HOME/dotfiles/check_update_dotfiles.sh disable=SC1090
 source "$HOME/dotfiles/check_update_dotfiles.sh"
 
-### Git ###
-if [ -f $HOME/.git-completion.bash ]; then
-  # shellcheck source=/Users/kobayashishun/.git-completion.bash
-  source $HOME/.git-completion.bash
-fi
-if [ -f $HOME/.git-prompt.sh ]; then
-  export GIT_PS1_SHOWDIRTYSTATE=true
-  # shellcheck source=/Users/kobayashishun/.git-prompt.sh
-  source $HOME/.git-prompt.sh
-fi
-
 ### Java ###
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 #JAVA_HOME=$(/usr/libexec/java_home -v "17")
@@ -68,10 +57,6 @@ if [ -d "$HOME"/.cargo ]; then
     source "$CARGO_HOME/env"
   fi
 fi
-
-### Python ###
-eval "$(uv generate-shell-completion bash)"
-eval "$(uvx --generate-shell-completion bash)"
 
 ### JavaScript ###
 if [ -d "$HOME/.nvm" ]; then
@@ -105,20 +90,3 @@ fi
 if ! echo "$PATH" | grep --quiet "/usr/local/checker/bin"; then
   PATH=$PATH:/usr/local/checker/bin
 fi
-
-### Homebrew ###
-eval "$(/opt/homebrew/bin/brew shellenv)"
-if [ -e "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
-  source "$(brew --prefix)"/etc/profile.d/bash_completion.sh
-fi
-
-alias k=kubectl
-complete -F __start_kubectl k
-
-### Podman ###
-# Specify the location of the non-constant source
-# shellcheck source=/dev/stdin
-source <(podman completion bash)
-export KIND_EXPERIMENTAL_PROVIDER=podman
-
-source /opt/homebrew/etc/profile.d/z.sh
