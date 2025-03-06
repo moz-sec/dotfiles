@@ -3,13 +3,6 @@
 ### Bash ###
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-### if running bash ###
-if [ -n "$BASH_VERSION" ]; then
-  if [ -f "$HOME/.bashrc" ]; then
-    source "$HOME/.bashrc"
-  fi
-fi
-
 ### set PATH so it includes user's bin if it exists ###
 if [ -d "$HOME/bin" ]; then
   if ! echo "$PATH" | grep --quiet "$HOME/bin"; then
@@ -35,8 +28,8 @@ source "$HOME/dotfiles/check_update_dotfiles.sh"
 export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 #JAVA_HOME=$(/usr/libexec/java_home -v "17")
 #JAVA_HOME=$(/usr/libexec/java_home -v "18")
-#JAVA_HOME=$(/usr/libexec/java_home -v "20")
-#export JAVA_HOME
+JAVA_HOME=$(/usr/libexec/java_home -v "20")
+export JAVA_HOME
 
 ### Go ###
 if [ -d /usr/local/go/bin ]; then
@@ -90,3 +83,18 @@ fi
 if ! echo "$PATH" | grep --quiet "/usr/local/checker/bin"; then
   PATH=$PATH:/usr/local/checker/bin
 fi
+
+### if running bash ###
+if [ -n "$BASH_VERSION" ]; then
+  if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
+  fi
+fi
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# kubescape
+export PATH=$PATH:/Users/kobayashi/.kubescape/bin
+

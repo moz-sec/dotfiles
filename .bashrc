@@ -1,11 +1,7 @@
 #!/bin/bash
 
-### default:cyan / root:red ###
-if [ $UID -eq 0 ]; then
-  PS1='\[\e[1;31m\]\u@\h \[\e[1;31m\]\t \[\e[1;31m\]\W\n\[\e[1;31m\]\$ '
-else
-  PS1='\[\e[1;36m\]\u@\h \[\e[1;32m\]\t \[\e[1;33m\]\W \[\e[1;32m\]$(__git_ps1 " (%s)")\n\[\e[1;0m\]\$ '
-fi
+### z ###
+source /opt/homebrew/etc/profile.d/z.sh
 
 ### Git ###
 if [ -f "${HOME}/.git-completion.bash" ]; then
@@ -19,8 +15,8 @@ if [ -f "${HOME}/.git-prompt.sh" ]; then
 fi
 
 ### Python ###
-eval "$(uv generate-shell-completion bash)"
-eval "$(uvx --generate-shell-completion bash)"
+source <(uv --generate-shell-completion bash)
+source <(uvx --generate-shell-completion bash)
 
 ### Homebrew ###
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -32,6 +28,7 @@ fi
 ### kubectl ###
 alias k=kubectl
 complete -F __start_kubectl k
+source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
 
 ### Podman ###
 # Specify the location of the non-constant source
@@ -39,8 +36,14 @@ complete -F __start_kubectl k
 source <(podman completion bash)
 export KIND_EXPERIMENTAL_PROVIDER=podman
 
-### z ###
-source /opt/homebrew/etc/profile.d/z.sh
+### default:cyan / root:red ###
+if [ $UID -eq 0 ]; then
+  PS1='\[\e[1;31m\]\u@\h \[\e[1;31m\]\t \[\e[1;31m\]\W\n\[\e[1;31m\]\$ '
+else
+  PS1='\[\e[1;36m\]\u@\h \[\e[1;32m\]\t \[\e[1;33m\]\W \[\e[1;32m\]$(__git_ps1 " (%s)")$(kube_ps1)\n\[\e[1;0m\]\$ '
+fi
+
+alias path='echo ${PATH} | tr ":" "\n"'
 
 # refine command execution history with "fzf"
 select-history() {
@@ -64,3 +67,5 @@ function makes {
     make "$target"
   fi
 }
+
+
