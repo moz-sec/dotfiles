@@ -98,3 +98,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # kubescape
 export PATH=$PATH:/Users/kobayashi/.kubescape/bin
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/kobayashi/.lmstudio/bin"
+
