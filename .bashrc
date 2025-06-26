@@ -34,7 +34,7 @@ source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
 # Specify the location of the non-constant source
 # shellcheck source=/dev/stdin
 source <(podman completion bash)
-export KIND_EXPERIMENTAL_PROVIDER=podman
+#export KIND_EXPERIMENTAL_PROVIDER=podman
 
 ### default:cyan / root:red ###
 if [ $UID -eq 0 ]; then
