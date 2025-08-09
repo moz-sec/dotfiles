@@ -68,4 +68,9 @@ function makes {
   fi
 }
 
+export GPG_TTY=$(tty)
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/kobayashi/.lmstudio/bin"
+# End of LM Studio CLI section
 

@@ -1,7 +1,7 @@
 [user]
 name = moz-sec
 email = m0253c@gmail.com
-signingkey = 6F35D4E667C65DE2
+	signingkey = BB1B02C3D6A047FB89E6D75A8542E22C763AD624
 
 [alias]
 # view today's change diffs
@@ -23,3 +23,5 @@ gpgsign = true
 
 [init]
 defaultBranch = main
+[tag]
+	gpgSign = true
