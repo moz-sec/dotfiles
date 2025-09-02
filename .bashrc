@@ -54,10 +54,25 @@ bind -x '"\C-r": select-history'
 
 # select target in .ssh/config with "ssh"
 function sshs {
-  target=$(cat ~/.ssh/config | grep 'Host ' | cut -f2 -d' ' | fzf --preview "cat ~/.ssh/config | sed -ne '/^Host {}$/,/^\s*$/p'")
-  if [ -n "$target" ]; then
-    ssh "$target"
-  fi
+  target="$(
+    # Host 行から 2列目以降のトークンをすべて列挙し、重複を削除
+    awk '/^[[:space:]]*Host[[:space:]]+/ {
+           for (i=2;i<=NF;i++) if ($i!="*") print $i
+         }' "${HOME}/.ssh/config" \
+    | sort -u \
+    | fzf --height=80% --reverse --prompt='ssh> ' --preview "
+        # {} を含む Host ブロックをすべて表示
+        awk -v tgt='{}' '
+          BEGIN { show=0 }
+          /^[[:space:]]*Host[[:space:]]+/ {
+            show=0
+            for (i=2;i<=NF;i++) if (\$i==tgt) { show=1; break }
+          }
+          show { print }
+        ' ${HOME}/.ssh/config
+      "
+  )"
+  [ -n "$target" ] && ssh "$target"
 }
 
 # GUI selection from multiple targets with "make"
