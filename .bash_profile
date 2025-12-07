@@ -101,3 +101,6 @@ export PATH=$PATH:/Users/kobayashi/.kubescape/bin
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/kobayashi/.lmstudio/bin"
 
+
+# Added by Antigravity
+export PATH="/Users/kobayashi/.antigravity/antigravity/bin:$PATH"
